@@ -3,10 +3,6 @@ let HH = 400;
 let HP = 200;
 let BG = 8;
 
-let lumaImg;
-let convolvedImage;
-let img;
-
 function drawRGBHistogram(imgBuffer) {
   let histR = (new Array(256)).fill(0);
   let histG = (new Array(256)).fill(0);
@@ -75,7 +71,7 @@ function copyArray(a) {
 }
 
 function applyLuma(){
-  lumaImg = createImage(img.width, img.height);
+  let lumaImg = createImage(img.width, img.height);
   lumaImg.loadPixels();
   for (let i = 0; i < img.pixels.length; i+=4) {
     lumaImg.pixels[i] = (img.pixels[i] + img.pixels[i + 1] + img.pixels[i + 2]) / 3;
@@ -84,11 +80,11 @@ function applyLuma(){
     lumaImg.pixels[i + 3] = 255;
   }
   lumaImg.updatePixels();
-  imageType =  "Luma";
+  lumaImg.save('luma', 'png');
 }
 
 function convolve(name, matrix) {
-  convolvedImage = createImage(img.width, img.height);
+  let convolvedImage = createImage(img.width, img.height);
   convolvedImage.loadPixels();
   for (let x = 0; x < img.width; x++) {
     for (let y = 0; y < img.height; y++) {
@@ -102,7 +98,7 @@ function convolve(name, matrix) {
     }
   }
   convolvedImage.updatePixels();
-  imageType =  "Convolved";
+  convolvedImage.save(name, 'png');
 }
 
 function convolution(x, y, matrix) {
@@ -157,14 +153,6 @@ function applyUnsharp5x5() {
   convolve("Unsharp5x5", kernels["Unsharp5x5"]);
 }
 
-function showOriginalImage() {
-  imageType =  "Original";
-}
-
-function resetImage() {
-  img = loadImage("https://picsum.photos/400");
-}
-
 let kernels = {
   "Sharpen" : [[0,-1,0],
                [-1,5,-1],
@@ -187,28 +175,45 @@ let kernels = {
                              [-1/256,-4/256,-6/256,-4/256,-1/256]],
 };
 
+let img;
 let input;
-let showTypeSelect;
+let histogramTypeSelect;
 let sharpenButton;
 let boxBlurButton;
 let gaussianBlur3x3Button;
 let gaussianBlur5x5Button;
 let unsharpMasking5x5Button;
 let lumaButton;
-let originalButton;
-let imageType =  "Original";
+
+
+function handleFiles() {
+  const fileList = this.files; /* now you can work with the file list */
+  const file = fileList[0]
+
+  var reader = new FileReader();
+
+  reader.onload = function(e) {
+    if (file.type === 'image/png' || file.type === 'image/jpeg') {
+      img = loadImage(e.target.result, '');
+      img.loadPixels();
+    } else {
+      img = null;
+    }
+  }
+
+  reader.readAsDataURL(file);
+}
 
 function setup() {
   createCanvas(HW+100, HH+100 + HP);
-  img = loadImage("https://picsum.photos/400");
+  input = document.getElementById("file-input");
+  input.addEventListener("change", handleFiles, false);
   
-  showTypeSelect = createSelect();
-  showTypeSelect.position(HP, HP-50);
-  showTypeSelect.value("Mode");
-  showTypeSelect.option('RGB Histogram'); 
-  showTypeSelect.option('Brightness Histogram');
-  showTypeSelect.option('Image');
-  showTypeSelect.hide();
+  histogramTypeSelect = createSelect();
+  histogramTypeSelect.position(HP, HP-50);
+  histogramTypeSelect.option('RGB'); 
+  histogramTypeSelect.option('Brightness');
+  histogramTypeSelect.hide();
 
   sharpenButton = createButton('Sharpen');
   sharpenButton.position(10, 30);
@@ -239,41 +244,23 @@ function setup() {
   lumaButton.position(200, 110);
   lumaButton.mousePressed(applyLuma);
   lumaButton.hide();
-
-  originalButton = createButton('Original');
-  originalButton.position(10, HP-50);
-  originalButton.mousePressed(showOriginalImage);
-  originalButton.hide();
-
-  refreshButton = createButton('Refresh');
-  refreshButton.position(HP+200, HP - 50);
-  refreshButton.mousePressed(resetImage);
-  refreshButton.hide();
 }
 
 function draw() {
   background(0);
   if (img) {
-    showTypeSelect.show();
+    histogramTypeSelect.show();
     sharpenButton.show();
     boxBlurButton.show();
     gaussianBlur3x3Button.show();
     gaussianBlur5x5Button.show();
     unsharpMasking5x5Button.show();
     lumaButton.show();
-    originalButton.show();
-    refreshButton.show();
     img.loadPixels();
-    if (showTypeSelect.value() === 'RGB Histogram') {
+    if (histogramTypeSelect.value() === 'RGB') {
       drawRGBHistogram(img.pixels);
-    } else if (showTypeSelect.value() === 'Brightness Histogram') {
+    } else {
       drawBrightnessHistogram(img.pixels)
-    } else if (imageType === "Original") {
-      image(img, 10, HP);
-    } else if (imageType === "Luma") {
-      image(lumaImg, 10, HP);
-    } else if (imageType === "Convolved") {
-      image(convolvedImage, 10, HP);
     }
   }
 }
