@@ -28,7 +28,7 @@ function draw() {
   let centerY = height / 2;
 
   // Draw a loop of triangles
-  stroke("blue");
+  stroke("black");
   for (let i = 0; i < numShapes; i++) {
     let triangleX = centerX;
     let triangleY = centerY;
@@ -42,7 +42,7 @@ function draw() {
   }
 
   // Draw a loop of squares
-  stroke("red");
+  stroke("black");
   for (let i = 0; i < numShapes; i++) {
     let squareX = centerX;
     let squareY = centerY;
