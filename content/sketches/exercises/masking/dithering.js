@@ -1,11 +1,11 @@
 let img;
-var factor=1; 
+var factor=1; //If it is equal to 1 and there is a gray filter there will be only two colors. 
 var wd;
 var d;
 
 
 function preload() {
-    img = loadImage('showcase/sketches/exercises/dithering/cat.png');
+    img = loadImage('cat.png');
 }
 
 function setup() {
@@ -38,12 +38,13 @@ function setup() {
             pixels[index + 3] = newA;
 
 
+            //Calculating quantization error of a pixel.
             var quant_error_R=r-newR;
             var quant_error_G=g-newG;
             var quant_error_B=b-newB;
             var quant_error_A=a-newA;
 
-            
+            //
             index = getIndex(x+1,y);
             r=  pixels[index]+(quant_error_R*7/16.0);
             g=  pixels[index + 1]+(quant_error_G*7/16.0);

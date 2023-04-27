@@ -19,10 +19,12 @@ function deuteranopia(img) {
     let r = img.pixels[i];
     let g = img.pixels[i + 1];
     let b = img.pixels[i + 2];
-    
+
+
     let rNew = 0.625 * r + 0.375 * g + 0.001 * b;
     let gNew = 0.7 * r + 0.3 * g + 0 * b;
     let bNew = 0 * r + 0.3 * g + 0.7 * b;
+
     newImg.pixels[i] = rNew;
     newImg.pixels[i + 1] = gNew;
     newImg.pixels[i + 2] = bNew;

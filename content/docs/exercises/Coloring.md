@@ -8,6 +8,7 @@ Color blindness is classified according to the number of _color channels_ that a
 
 For this particular P5.js implementation, I choose ***deuteranopia*** as my colorblindess type of interest. **Deuteranopia** is a kind of green color blindness that nullifies the person's ability to recognize the color green, thus their color spectrum goes only from blue hues to yellow ones, as shown bellow.
 
+
 ![undefined](https://upload.wikimedia.org/wikipedia/commons/5/5a/Rainbow_Deuteranopia.svg)
 
 Now, diving into the P5.js implementation, I used a fairly simple mapping function as the backbone of the color mapping process. This mapping function recieves an image as input, to process the image in the three color channels first we need to load them into a array. This is achieved by the next function: 
@@ -32,7 +33,7 @@ Finally here's the complete P5.js implementation:
 
 [1] Stockman, A., Sharpe, L. and Vries, R. (1999) _Color Vision: From Genes to Perception_. Cambridge University Press.
 
-{{< p5-iframe sketch="/showcase/sketches/exercises/coloring/1.js" width="450" height="450" >}}
+{{< p5-iframe sketch="/showcase/sketches/exercises/coloring/1.js" width="500" height="540" >}}
 
 ## [Color modes](https://ww2.lacan.upc.edu/doc/intel/ipp/ipp_manual/IPPI/ippi_ch6/ch6_color_models.htm)
 >**Prompt:** Research other color models such as HSL, HSB, XYZ.
