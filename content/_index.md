@@ -12,6 +12,11 @@ This is a workbook for the Visual Computing class in the National University of 
 * Andryut Huertas - aahuertasca@unal.edu.co
 * Nicolas La Rotta - nlam@unal.edu.co
 
+# Deliveries:
+* First delivery link: https://youtu.be/KKfeNefDymY
+
+{{< youtube KKfeNefDymY>}}
+
 ## Hacking
 
 Welcome to the [gohugo](https://gohugo.io/) template to create rich content [academic reports](https://www.wordy.com/writers-workshop/writing-an-academic-report/) having [p5.js](https://p5js.org/) sketches.
