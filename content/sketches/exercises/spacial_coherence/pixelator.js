@@ -3,7 +3,7 @@ var arraylist = [];
 var resMax = 30;
 
 function preload(){
-	img = loadImage("https://picsum.photos/500");
+	img = loadImage("/showcase/needler.jpg");
 }
 
 function setup() {

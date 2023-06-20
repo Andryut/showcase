@@ -234,4 +234,4 @@ function draw() {
   updatePixels();
 }
 {{< /highlight >}} {{< /details >}}
-{{< p5-iframe sketch="/showcase/sketches/exercises/spacial_coherence/pixelator.js" width="550" height="550" >}} 
+{{< p5-iframe sketch="/showcase/sketches/exercises/spacial_coherence/pixelator.js" width="720" height="550" >}} 
