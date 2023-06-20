@@ -17,16 +17,16 @@ let rgb;
 const SAMPLE_RES = 100;
 
 function preload() {
-  image_src = loadImage("/showcase/resources/_gen/images/needler.jpg");
-  video_src = createVideo(["/showcase/resources/_gen/images/video.mp4"]);
+  image_src = loadImage("/showcase/car.jpg");
+  video_src = createVideo(["/showcase/drift.mp4"]);
   video_src.hide(); // by default video shows up in separate dom
-  mosaic = readShader("/showcase/sketches/shaders/photomosaic.frag");
+  mosaic = readShader("/showcase/sketches/exercises/photomosaic/photomosaic.frag");
   p = [];
-  for (let i = 1; i <= 23; i++) {
+  for (let i = 1; i <= 40; i++) {
     if (i.toString().length == 1) {
-      p.push(loadImage(`/showcase/resources/_gen/images/blocks/00000${i}.jpg`));
+      p.push(loadImage(`/showcase/cars/00000${i}.jpg`));
     } else {
-      p.push(loadImage(`/showcase/resources/_gen/images/blocks/0000${i}.jpg`));
+      p.push(loadImage(`/showcase/cars/0000${i}.jpg`));
     }
   }
 }
@@ -121,13 +121,6 @@ function draw() {
   cover({
     texture: true,
   });
-  // let div = createDiv(floor(frameRate()));
-  // div.style("font-size", "16px");
-  // div.style("background-color", "white");
-  // div.style("font-family", "Arial");
-  // div.style("font-size", "30px");
-  // div.style("font-weight", "bold");
-  // div.position(20, 20);
 }
 
 function windowResized() {
