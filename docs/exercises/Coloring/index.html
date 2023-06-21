@@ -2,7 +2,7 @@
 In order to assess this problem, first we need to understand colorblindness and later, pick one of the many forms this may manifest.
 What is colorblindness? # Color blindness is classified according to the number of color channels that are available to a person to conveying color information into: monochromacy, dichromacy and anomalous trichromacy."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="Coloring for colorblindness # Prompt: Implement a color mapping application that helps people who are color blind see the colors around them.
 In order to assess this problem, first we need to understand colorblindness and later, pick one of the many forms this may manifest.
-What is colorblindness? # Color blindness is classified according to the number of color channels that are available to a person to conveying color information into: monochromacy, dichromacy and anomalous trichromacy."><meta property="og:type" content="article"><meta property="og:url" content="https://andryut.github.io/showcase/docs/exercises/Coloring/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2023-04-27T10:58:00-05:00"><title>Coloring | Showcase Template</title><link rel=manifest href=/showcase/manifest.json><link rel=icon href=/showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/showcase/book.min.4b35fed0bea034bbc19c89c71e14b73fb9c68cfcc586b9382adfb9b7b103ba06.css integrity="sha256-SzX+0L6gNLvBnInHHhS3P7nGjPzFhrk4Kt+5t7EDugY=" crossorigin=anonymous><script defer src=/showcase/flexsearch.min.js></script>
+What is colorblindness? # Color blindness is classified according to the number of color channels that are available to a person to conveying color information into: monochromacy, dichromacy and anomalous trichromacy."><meta property="og:type" content="article"><meta property="og:url" content="https://andryut.github.io/showcase/docs/exercises/Coloring/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2023-06-21T00:28:49-05:00"><title>Coloring | Showcase Template</title><link rel=manifest href=/showcase/manifest.json><link rel=icon href=/showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/showcase/book.min.4b35fed0bea034bbc19c89c71e14b73fb9c68cfcc586b9382adfb9b7b103ba06.css integrity="sha256-SzX+0L6gNLvBnInHHhS3P7nGjPzFhrk4Kt+5t7EDugY=" crossorigin=anonymous><script defer src=/showcase/flexsearch.min.js></script>
 <script defer src=/showcase/en.search.min.3a8d658c77eb93c7f12a2b8af49a700131e474f288eefb605d9fa61576dbe5a7.js integrity="sha256-Oo1ljHfrk8fxKiuK9JpwATHkdPKI7vtgXZ+mFXbb5ac=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
 <input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/showcase/><span>Showcase Template</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><a href=/showcase/docs/team/>Team</a><ul></ul></li><li class=book-section-flat><a href=/showcase/docs/exercises/>Exercises</a><ul><li><a href=/showcase/docs/exercises/Coloring/ class=active>Coloring</a></li><li><a href=/showcase/docs/exercises/Depth-Perception/>Depth Perception</a></li><li><a href=/showcase/docs/exercises/Image-Processing/>Image Processing</a></li><li><a href=/showcase/docs/exercises/Mach-Bands/>Mach Bands</a></li><li><a href=/showcase/docs/exercises/Masking/>Masking</a></li><li><a href=/showcase/docs/exercises/Photomosaic/>Photomosaic</a></li><li><a href=/showcase/docs/exercises/Post-Effect/>Post Effect</a></li><li><a href=/showcase/docs/exercises/Spatial-Coherence/>Spatial Coherence</a></li><li><a href=/showcase/docs/exercises/Temporal-Coherence/>Temporal Coherence</a></li><li><a href=/showcase/docs/exercises/Visual-Illusions/>Visual Illusions</a></li></ul></li><li><input type=checkbox id=section-9370f1a5d0248572ac505e0c6d4ad190 class=toggle>
 <label for=section-9370f1a5d0248572ac505e0c6d4ad190 class="flex justify-between"><a href=/showcase/docs/shortcodes/>Shortcodes</a></label><ul><li><a href=/showcase/docs/shortcodes/buttons/>Buttons</a></li><li><a href=/showcase/docs/shortcodes/columns/>Columns</a></li><li><a href=/showcase/docs/shortcodes/details/>Details</a></li><li><a href=/showcase/docs/shortcodes/hints/>Hints</a></li><li><a href=/showcase/docs/shortcodes/katex/>Katex</a></li><li><a href=/showcase/docs/shortcodes/mermaid/>Mermaid</a></li><li><input type=checkbox id=section-ec67a64aba70b9df3d2a9acd6c92e3bc class=toggle>
@@ -91,5 +91,253 @@ Z = 0.019334*R&#39; + 0.119193*G&#39; + 0.950227*B&#39;
 </code></pre><p>The equations for X,Y,Z calculation are given on the assumption that R&rsquo;,G&rsquo;, and B&rsquo; values are normalized to the range [0..1].</p><pre tabindex=0><code>R&#39; = 3.240479 * X - 1.53715 * Y - 0.498535 * Z
 G&#39; = -0.969256 * X + 1.875991 * Y + 0.041556 * Z
 B&#39; = 0.055648 * X - 0.204043 * Y + 1.057311 * Z
-</code></pre><p>The equations for R&rsquo;,G&rsquo;, and B&rsquo; calculation are given on the assumption that X,Y, and Z values are in the range [0..1].</p><p>[1] Stockman, A., Sharpe, L. and Vries, R. (1999) <em>Color Vision: From Genes to Perception</em>. Cambridge University Press.</p><p>[Rog85] David Rogers. Procedural Elements for Computer Graphics. McGraw-Hill, 1985.</p></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/visualcomputing/showcase/commit/e311bf6ca85a7a419c24cfc0221d91cd16eb51a4 title='Last modified by adol2299 | April 27, 2023' target=_blank rel=noopener><img src=/showcase/svg/calendar.svg class=book-icon alt=Calendar>
-<span>April 27, 2023</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#coloring-for-colorblindness>Coloring for colorblindness</a><ul><li><a href=#what-is-colorblindness>What is colorblindness?</a></li><li><a href=#color-modeshttpsww2lacanupcedudocintelippipp_manualippiippi_ch6ch6_color_modelshtm><a href=https://ww2.lacan.upc.edu/doc/intel/ipp/ipp_manual/IPPI/ippi_ch6/ch6_color_models.htm>Color modes</a></a><ul><li><a href=#hsb-and-hsl-color-models>HSB, and HSL Color Models</a></li><li><a href=#xyz-color-model>XYZ Color Model</a></li></ul></li></ul></li></ul></nav></div></aside></main></body></html>
+</code></pre><p>The equations for R&rsquo;,G&rsquo;, and B&rsquo; calculation are given on the assumption that X,Y, and Z values are in the range [0..1].</p><p>[1] Stockman, A., Sharpe, L. and Vries, R. (1999) <em>Color Vision: From Genes to Perception</em>. Cambridge University Press.</p><p>[Rog85] David Rogers. Procedural Elements for Computer Graphics. McGraw-Hill, 1985.</p><h4 id=shaders>Shaders
+<a class=anchor href=#shaders>#</a></h4><blockquote><p><strong>Prompt:</strong></p></blockquote><ol><li>Figure it out the js code of the above sketches.</li><li>Implement other blending modes. Take this reference as starting point.</li></ol><blockquote></blockquote><h4 id=first-sketch>First sketch
+<a class=anchor href=#first-sketch>#</a></h4><iframe style=width:420px;height:420px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js></script>
+             <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js></script> 
+            
+            
+            
+            
+            <script>
+              
+let blendShader;
+let color1, color2;
+let radius;
+
+function preload() {
+  blendShader = readShader('./blend.frag');
+}
+
+function setup() {
+  createCanvas(300, 300, WEBGL);
+  colorMode(RGB, 1);
+  radius = width / 5;
+  noStroke();
+  color1 = createColorPicker(color(0.8, 0.5, 0.3));
+  color1.position(10, 10);
+  color2 = createColorPicker(color(0.9, 0.1, 0.4));
+  color2.position(width / 2 + 10, 10);
+  shader(blendShader);
+}
+
+function draw() {
+  // rectMode, e.g., rectMode(RADIUS) requires Tree.pmvMatrix
+  // so no square but beginShape / endShape
+  let l = 0.8;
+  let offset = (1 - l) / 2;
+  let color1Color = color1.color();
+  let color2Color = color2.color();
+  background(0);
+  blendShader.setUniform('uMaterial1', [red(color1Color), green(color1Color), blue(color1Color), 1.0]);
+  blendShader.setUniform('uMaterial2', [1.0, 1.0, 1.0, 1.0]);
+  beginShape();
+  vertex(-offset - l, +offset, 0);
+  vertex(-offset, +offset, 0);
+  vertex(-offset, +offset + l, 0);
+  vertex(-offset - l, +offset + l, 0);
+  endShape();
+  blendShader.setUniform('uMaterial1', [1.0, 1.0, 1.0, 1.0]);
+  blendShader.setUniform('uMaterial2', [red(color2Color), green(color2Color), blue(color2Color), 1.0]);
+  beginShape();
+  vertex(+offset, +offset, 0);
+  vertex(+offset + l, +offset, 0);
+  vertex(+offset + l, +offset + l, 0);
+  vertex(+offset, +offset + l, 0);
+  endShape();
+  blendShader.setUniform('uMaterial1', [red(color1Color), green(color1Color), blue(color1Color), 1.0]);
+  blendShader.setUniform('uMaterial2', [red(color2Color), green(color2Color), blue(color2Color), 1.0]);
+  beginShape();
+  vertex(-l / 2, -offset - l, 0);
+  vertex(+l / 2, -offset - l, 0);
+  vertex(+l / 2, -offset, 0);
+  vertex(-l / 2, -offset, 0);
+  endShape();
+}
+
+
+            </script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe><h4 id=first-sketch-1>First sketch
+<a class=anchor href=#first-sketch-1>#</a></h4><iframe style=width:420px;height:420px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js></script>
+             <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js></script> 
+            
+            
+            
+            
+            <script>
+              
+let blendShader;
+let brightness;
+let color1, color2;
+let radius;
+
+function preload() {
+  blendShader = readShader('blend2.frag');
+}
+
+function setup() {
+  createCanvas(300, 300, WEBGL);
+  colorMode(RGB, 1);
+  rectMode(RADIUS);
+  radius = width / 5;
+  noStroke();
+  color1 = createColorPicker(color(0.8, 0.5, 0.3));
+  color1.position(10, 10);
+  color2 = createColorPicker(color(0.9, 0.1, 0.4));
+  color2.position(width / 2 + 10, 10);
+  // brightness slider (located above to the right)
+  // emits 'brightness' uniform in [0.0, 1.0] ∈ R
+  brightness = createSlider(0, 1, 0.5, 0.05);
+  brightness.position(width / 2 - 35, height / 2);
+  brightness.style('width', '80px');
+  shader(blendShader);
+}
+
+function draw() {
+  // rectMode, e.g., rectMode(RADIUS) requires Tree.pmvMatrix
+  // so no square but beginShape / endShape
+  let l = 0.8;
+  let offset = (1 - l) / 2;
+  let color1Color = color1.color();
+  let color2Color = color2.color();
+  background(0);
+  blendShader.setUniform('uMaterial1', [red(color1Color), green(color1Color), blue(color1Color), 1.0]);
+  blendShader.setUniform('uMaterial2', [1.0, 1.0, 1.0, 1.0]);
+  blendShader.setUniform('brightness', 1.0);
+  beginShape();
+  vertex(-offset - l, +offset, 0);
+  vertex(-offset, +offset, 0);
+  vertex(-offset, +offset + l, 0);
+  vertex(-offset - l, +offset + l, 0);
+  endShape();
+  blendShader.setUniform('uMaterial1', [1.0, 1.0, 1.0, 1.0]);
+  blendShader.setUniform('uMaterial2', [red(color2Color), green(color2Color), blue(color2Color), 1.0]);
+  blendShader.setUniform('brightness', 1.0);
+  beginShape();
+  vertex(+offset, +offset, 0);
+  vertex(+offset + l, +offset, 0);
+  vertex(+offset + l, +offset + l, 0);
+  vertex(+offset, +offset + l, 0);
+  endShape();
+  blendShader.setUniform('uMaterial1', [red(color1Color), green(color1Color), blue(color1Color), 1.0]);
+  blendShader.setUniform('uMaterial2', [red(color2Color), green(color2Color), blue(color2Color), 1.0]);
+  blendShader.setUniform('brightness', brightness.value());
+  beginShape();
+  vertex(-l / 2, -offset - l, 0);
+  vertex(+l / 2, -offset - l, 0);
+  vertex(+l / 2, -offset, 0);
+  vertex(-l / 2, -offset, 0);
+  endShape();
+}
+
+
+            </script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe><h4 id=other-blending-modes>Other blending modes
+<a class=anchor href=#other-blending-modes>#</a></h4><p>Here we can select from different blending modes on the select option</p><iframe style=width:420px;height:420px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js></script>
+             <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js></script> 
+            
+            
+            
+            
+            <script>
+              
+let colorShader;
+let slider;
+
+function preload() {
+  colorShader = readShader('blend3.frag',
+                          { matrices: Tree.NONE, varyings: Tree.color4 });
+}
+
+function setup() {
+  createCanvas(400, 400, WEBGL);
+  colorPickerA = createColorPicker('yellow');
+  colorPickerA.position(5, 5);
+  colorPickerB = createColorPicker('cyan');
+  colorPickerB.position(80, 5);
+  slider = createSlider(0, 255, 200);
+  slider.position(160, 100);
+  slider.style('width', '80px');
+  sel = createSelect();
+  sel.position(200, 10);
+  sel.option('add');
+  sel.option('diff');
+  sel.option('mult');
+  sel.option('screen');
+  sel.option('light');
+  sel.option('dark');
+}
+
+function draw() {
+  background(0);
+  // Update the color variables in the shader
+  updateShaderColors();
+  // Draw the two regular rectangles
+  resetShader();
+  fill(colorPickerA.color());
+  rect(-100, -50, 100, 100);
+  fill(colorPickerB.color());
+  rect(0, -50, 100, 100);
+  // Draw with blend mode shader
+  shader(colorShader);
+  beginShape();
+  vertex(0.25, 0.25);
+  vertex(0.25, -0.25);
+  vertex(-0.25, -0.25);
+  vertex(-0.25, 0.25);
+
+  endShape(CLOSE);
+}
+
+function updateShaderColors(){
+    colorShader.setUniform('colorA', [ red(colorPickerA.color())/255,
+                                        green(colorPickerA.color())/255,
+                                        blue(colorPickerA.color())/255,
+                                        alpha(colorPickerA.color())/255]);
+    colorShader.setUniform('colorB', [  red(colorPickerB.color())/255,
+                                        green(colorPickerB.color())/255,
+                                        blue(colorPickerB.color())/255,
+                                        alpha(colorPickerB.color())/255]);
+    colorShader.setUniform('alphaValue', slider.value()/255.0);
+    let item = 1;
+    if( sel.value() == 'ADD' ) item = 1;
+    else if( sel.value() == 'DIFFERENCE' ) item = 2;
+    else if( sel.value() == 'MULTIPLY' ) item = 3;
+    else if( sel.value() == 'SCREEN' ) item = 4;
+    else if( sel.value() == 'LIGHTEST' ) item = 5;
+    else if( sel.value() == 'DARKEST' ) item = 6;
+    //print(item);
+    colorShader.setUniform('blendMode', item);                                      
+}
+
+
+            </script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/visualcomputing/showcase/commit/a562ec9f36f4cac8039e88f5bb7783088d2ea4e9 title='Last modified by Andryut | June 21, 2023' target=_blank rel=noopener><img src=/showcase/svg/calendar.svg class=book-icon alt=Calendar>
+<span>June 21, 2023</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#coloring-for-colorblindness>Coloring for colorblindness</a><ul><li><a href=#what-is-colorblindness>What is colorblindness?</a></li><li><a href=#color-modeshttpsww2lacanupcedudocintelippipp_manualippiippi_ch6ch6_color_modelshtm><a href=https://ww2.lacan.upc.edu/doc/intel/ipp/ipp_manual/IPPI/ippi_ch6/ch6_color_models.htm>Color modes</a></a><ul><li><a href=#hsb-and-hsl-color-models>HSB, and HSL Color Models</a></li><li><a href=#xyz-color-model>XYZ Color Model</a></li></ul></li></ul></li></ul></nav></div></aside></main></body></html>
