@@ -1,0 +1,186 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Texturing # La texturización es el procedimiento mediante el cual se asigna una imagen o mapa de bits a un objeto tridimensional o a una superficie. Este proceso implica trabajar con los sistemas de coordenadas de las figuras y de la textura. Utilizando GLSL y técnicas de programación en paralelo, el shader y la GPU procesan la textura para lograr su aplicación adecuada en el objeto o superficie.
+Los efectos que puedan aplicarse a una imagen requieren utilizar coordenaddas dadas, las coordenadas texcoords2 y los texels permiten realizar operaciones pixel a pixel haciendo uso de la GPU ."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="Texturing # La texturización es el procedimiento mediante el cual se asigna una imagen o mapa de bits a un objeto tridimensional o a una superficie. Este proceso implica trabajar con los sistemas de coordenadas de las figuras y de la textura. Utilizando GLSL y técnicas de programación en paralelo, el shader y la GPU procesan la textura para lograr su aplicación adecuada en el objeto o superficie.
+Los efectos que puedan aplicarse a una imagen requieren utilizar coordenaddas dadas, las coordenadas texcoords2 y los texels permiten realizar operaciones pixel a pixel haciendo uso de la GPU ."><meta property="og:type" content="article"><meta property="og:url" content="https://andryut.github.io/showcase/docs/exercises/Texturing/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2023-06-21T05:04:42-05:00"><title>Texturing | Showcase Template</title><link rel=manifest href=/showcase/manifest.json><link rel=icon href=/showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/showcase/book.min.4b35fed0bea034bbc19c89c71e14b73fb9c68cfcc586b9382adfb9b7b103ba06.css integrity="sha256-SzX+0L6gNLvBnInHHhS3P7nGjPzFhrk4Kt+5t7EDugY=" crossorigin=anonymous><script defer src=/showcase/flexsearch.min.js></script>
+<script defer src=/showcase/en.search.min.3a8d658c77eb93c7f12a2b8af49a700131e474f288eefb605d9fa61576dbe5a7.js integrity="sha256-Oo1ljHfrk8fxKiuK9JpwATHkdPKI7vtgXZ+mFXbb5ac=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/showcase/><span>Showcase Template</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li class=book-section-flat><a href=/showcase/docs/team/>Team</a><ul></ul></li><li class=book-section-flat><a href=/showcase/docs/exercises/>Exercises</a><ul><li><a href=/showcase/docs/exercises/Coloring/>Coloring</a></li><li><a href=/showcase/docs/exercises/Depth-Perception/>Depth Perception</a></li><li><a href=/showcase/docs/exercises/Image-Processing/>Image Processing</a></li><li><a href=/showcase/docs/exercises/Mach-Bands/>Mach Bands</a></li><li><a href=/showcase/docs/exercises/Masking/>Masking</a></li><li><a href=/showcase/docs/exercises/Photomosaic/>Photomosaic</a></li><li><a href=/showcase/docs/exercises/Post-Effect/>Post Effect</a></li><li><a href=/showcase/docs/exercises/Procedural-texturing/>Procedural Texturing</a></li><li><a href=/showcase/docs/exercises/Spatial-Coherence/>Spatial Coherence</a></li><li><a href=/showcase/docs/exercises/Temporal-Coherence/>Temporal Coherence</a></li><li><a href=/showcase/docs/exercises/Texturing/ class=active>Texturing</a></li><li><a href=/showcase/docs/exercises/Visual-Illusions/>Visual Illusions</a></li></ul></li><li><input type=checkbox id=section-9370f1a5d0248572ac505e0c6d4ad190 class=toggle>
+<label for=section-9370f1a5d0248572ac505e0c6d4ad190 class="flex justify-between"><a href=/showcase/docs/shortcodes/>Shortcodes</a></label><ul><li><a href=/showcase/docs/shortcodes/buttons/>Buttons</a></li><li><a href=/showcase/docs/shortcodes/columns/>Columns</a></li><li><a href=/showcase/docs/shortcodes/details/>Details</a></li><li><a href=/showcase/docs/shortcodes/hints/>Hints</a></li><li><a href=/showcase/docs/shortcodes/katex/>Katex</a></li><li><a href=/showcase/docs/shortcodes/mermaid/>Mermaid</a></li><li><input type=checkbox id=section-ec67a64aba70b9df3d2a9acd6c92e3bc class=toggle>
+<label for=section-ec67a64aba70b9df3d2a9acd6c92e3bc class="flex justify-between"><a href=/showcase/docs/shortcodes/p5/>P5</a></label><ul><li><a href=/showcase/docs/shortcodes/p5/iframe/>Iframe</a></li><li><a href=/showcase/docs/shortcodes/p5/div/>Div</a></li></ul></li><li><a href=/showcase/docs/shortcodes/tabs/>Tabs</a></li></ul></li></ul><ul><li><a href=/showcase/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/showcase/svg/menu.svg class=book-icon alt=Menu></label>
+<strong>Texturing</strong>
+<label for=toc-control><img src=/showcase/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><ul><li><a href=#texturing>Texturing</a></li></ul></li></ul></nav></aside></header><article class=markdown><h2 id=texturing>Texturing
+<a class=anchor href=#texturing>#</a></h2><p>La texturización es el procedimiento mediante el cual se asigna una imagen o mapa de bits a un objeto tridimensional o a una superficie. Este proceso implica trabajar con los sistemas de coordenadas de las figuras y de la textura. Utilizando GLSL y técnicas de programación en paralelo, el shader y la GPU procesan la textura para lograr su aplicación adecuada en el objeto o superficie.</p><p>Los efectos que puedan aplicarse a una imagen requieren utilizar coordenaddas dadas, las coordenadas <strong>texcoords2</strong> y los <strong>texels</strong> permiten realizar operaciones pixel a pixel haciendo uso de la GPU .</p><blockquote class="book-hint info"><p><strong>Ejercicio 3.1 y 3.2:</strong></p><ul><li>Implementar heraamientas de iluminacion i color tales como <em>HSV valor V, HSL luminancia L, Promedio de componentes</em>.</li><li>Implementar el tintado de texturas mezclando el colo y los datos interpolados de los texeles.</li></ul></blockquote><blockquote class="book-hint warning">Se opera matematicamente los valores que se obtienen en los canales rgba para que el shader los procese nuevamente.</blockquote><iframe id=tools style=width:725px;height:525px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js></script>
+             <script src=/showcase/sketches/exercises/texturing/p5.treegl.js></script> 
+            
+            
+            
+            
+            <script src=/showcase/sketches/exercises/texturing/tools.js></script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe>
+<details><summary><strong>CODIGO:</strong> tools.js</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>lumaShader</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>img</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>grey_scale</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>average</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>HSVV</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>Tint</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>ColorT</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>preload</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>lumaShader</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>readShader</span>(<span style=color:#e6db74>&#39;/showcase/sketches/exercises/texturing/shaders/colors.frag&#39;</span>,{ <span style=color:#a6e22e>varyings</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>texcoords2</span>});
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>img</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>loadImage</span>(<span style=color:#e6db74>&#39;/visual_computing/imgs/car.jpg&#39;</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>drawControls</span>(<span style=color:#a6e22e>enabled</span>){
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span>(<span style=color:#a6e22e>enabled</span>){
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>colorT</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createColorPicker</span>(<span style=color:#a6e22e>color</span>(<span style=color:#ae81ff>255</span>,<span style=color:#ae81ff>255</span>,<span style=color:#ae81ff>255</span>));
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>colorT</span>.<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>125</span>, <span style=color:#ae81ff>10</span>);
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>700</span>, <span style=color:#ae81ff>500</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>noStroke</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>textureMode</span>(<span style=color:#a6e22e>NORMAL</span>);
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createSelect</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>10</span>, <span style=color:#ae81ff>10</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>option</span>(<span style=color:#e6db74>&#39;None&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>option</span>(<span style=color:#e6db74>&#39;Luma&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>option</span>(<span style=color:#e6db74>&#39;Average&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>option</span>(<span style=color:#e6db74>&#39;HSV Value V&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>option</span>(<span style=color:#e6db74>&#39;HSL Value L&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>option</span>(<span style=color:#e6db74>&#39;Tint&#39;</span>);
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>selected</span>(<span style=color:#e6db74>&#39;None&#39;</span>);
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>drawControls</span>(<span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span>(<span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>value</span>()<span style=color:#f92672>==</span><span style=color:#e6db74>&#34;None&#34;</span>){
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>shader</span>(<span style=color:#a6e22e>lumaShader</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;texture&#39;</span>, <span style=color:#a6e22e>img</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;HSVV&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;HSLL&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;grey_scale&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;average&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(<span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>value</span>()<span style=color:#f92672>==</span><span style=color:#e6db74>&#34;Luma&#34;</span>){
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>shader</span>(<span style=color:#a6e22e>lumaShader</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;grey_scale&#39;</span>,<span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;average&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;HSVV&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;HSLL&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;texture&#39;</span>, <span style=color:#a6e22e>img</span>);
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(<span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>value</span>()<span style=color:#f92672>==</span><span style=color:#e6db74>&#34;Average&#34;</span>){
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>shader</span>(<span style=color:#a6e22e>lumaShader</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;average&#39;</span>,<span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;grey_scale&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;HSVV&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;HSLL&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;texture&#39;</span>, <span style=color:#a6e22e>img</span>);
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(<span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>value</span>() <span style=color:#f92672>==</span><span style=color:#e6db74>&#34;HSV Value V&#34;</span>){
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>shader</span>(<span style=color:#a6e22e>lumaShader</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;HSVV&#39;</span>,<span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;HSLL&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;average&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;grey_scale&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;texture&#39;</span>, <span style=color:#a6e22e>img</span>);
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(<span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>value</span>() <span style=color:#f92672>==</span><span style=color:#e6db74>&#34;HSL Value L&#34;</span>){
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>shader</span>(<span style=color:#a6e22e>lumaShader</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;HSLL&#39;</span>,<span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;HSVV&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;average&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;grey_scale&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;texture&#39;</span>, <span style=color:#a6e22e>img</span>);
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(<span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>value</span>() <span style=color:#f92672>==</span><span style=color:#e6db74>&#34;Tint&#34;</span>){
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>shader</span>(<span style=color:#a6e22e>lumaShader</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;Tint&#39;</span>,<span style=color:#66d9ef>true</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;HSLL&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;HSVV&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;average&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;grey_scale&#39;</span>,<span style=color:#66d9ef>false</span>);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;texture&#39;</span>, <span style=color:#a6e22e>img</span>);
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>RC</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>colorT</span>.<span style=color:#a6e22e>color</span>();
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>lumaShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;colorT&#39;</span>,[<span style=color:#a6e22e>red</span>(<span style=color:#a6e22e>RC</span>),<span style=color:#a6e22e>green</span>(<span style=color:#a6e22e>RC</span>),<span style=color:#a6e22e>blue</span>(<span style=color:#a6e22e>RC</span>),<span style=color:#ae81ff>1.0</span>]);
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>quad</span>(<span style=color:#f92672>-</span><span style=color:#a6e22e>width</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>height</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>, <span style=color:#a6e22e>width</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>height</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>, <span style=color:#a6e22e>width</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>, <span style=color:#a6e22e>height</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>, <span style=color:#f92672>-</span><span style=color:#a6e22e>width</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>, <span style=color:#a6e22e>height</span> <span style=color:#f92672>/</span> <span style=color:#ae81ff>2</span>);
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></details><details><summary><strong>CODIGO:</strong> colors.frag</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-glsl data-lang=glsl><span style=display:flex><span><span style=color:#66d9ef>precision</span> <span style=color:#66d9ef>mediump</span> <span style=color:#66d9ef>float</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>uniform</span> <span style=color:#66d9ef>bool</span> grey_scale;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>uniform</span> <span style=color:#66d9ef>bool</span> average;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>uniform</span> <span style=color:#66d9ef>bool</span> HSVV;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>uniform</span> <span style=color:#66d9ef>bool</span> HSLL;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>uniform</span> <span style=color:#66d9ef>bool</span> Tint;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>uniform</span> <span style=color:#66d9ef>vec4</span> colorT;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>uniform</span> <span style=color:#66d9ef>sampler2D</span> texture;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>varying</span> <span style=color:#66d9ef>vec2</span> texcoords2;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>float</span> luma(<span style=color:#66d9ef>vec3</span> texel) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>0.299</span> <span style=color:#f92672>*</span> texel.r <span style=color:#f92672>+</span> <span style=color:#ae81ff>0.587</span> <span style=color:#f92672>*</span> texel.g <span style=color:#f92672>+</span> <span style=color:#ae81ff>0.114</span> <span style=color:#f92672>*</span> texel.b;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>float</span> favg(<span style=color:#66d9ef>vec3</span> texel){
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> (texel.r <span style=color:#f92672>+</span> texel.g <span style=color:#f92672>+</span> texel.b ) <span style=color:#f92672>/</span> <span style=color:#ae81ff>3.0</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>float</span> HSV (<span style=color:#66d9ef>vec3</span> texel){
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> max(max(texel.r,texel.g),texel.b); ;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>float</span> HSL (<span style=color:#66d9ef>vec3</span> texel){
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>float</span> CMax <span style=color:#f92672>=</span> max(max(texel.r,texel.g),texel.b);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>float</span> CMin <span style=color:#f92672>=</span> min(min(texel.r,texel.g),texel.b);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> (CMax <span style=color:#f92672>+</span> CMin) <span style=color:#f92672>/</span> <span style=color:#ae81ff>2.0</span> ;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>float</span> Ftint(<span style=color:#66d9ef>float</span> channel, <span style=color:#66d9ef>float</span> color){
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>float</span> N <span style=color:#f92672>=</span> channel <span style=color:#f92672>*</span> (color <span style=color:#f92672>/</span> <span style=color:#ae81ff>255.0</span>);
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> N;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> main() {
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>vec4</span> texel <span style=color:#f92672>=</span> texture2D(texture, texcoords2);
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span>(grey_scale <span style=color:#f92672>==</span> <span style=color:#66d9ef>true</span>){
+</span></span><span style=display:flex><span>    gl_FragColor <span style=color:#f92672>=</span> <span style=color:#66d9ef>vec4</span>((<span style=color:#66d9ef>vec3</span>(luma(texel.rgb))), <span style=color:#ae81ff>1.0</span>); 
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(average <span style=color:#f92672>==</span> <span style=color:#66d9ef>true</span>){
+</span></span><span style=display:flex><span>    gl_FragColor <span style=color:#f92672>=</span> <span style=color:#66d9ef>vec4</span>((<span style=color:#66d9ef>vec3</span>(favg(texel.rgb))), <span style=color:#ae81ff>1.0</span>); 
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(HSVV<span style=color:#f92672>==</span> <span style=color:#66d9ef>true</span>){
+</span></span><span style=display:flex><span>    gl_FragColor <span style=color:#f92672>=</span> <span style=color:#66d9ef>vec4</span>((<span style=color:#66d9ef>vec3</span>(HSV(texel.rgb))), <span style=color:#ae81ff>1.0</span>);
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(HSLL<span style=color:#f92672>==</span> <span style=color:#66d9ef>true</span>){
+</span></span><span style=display:flex><span>    gl_FragColor <span style=color:#f92672>=</span> <span style=color:#66d9ef>vec4</span>((<span style=color:#66d9ef>vec3</span>(HSL(texel.rgb))), <span style=color:#ae81ff>1.0</span>);
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>(Tint <span style=color:#f92672>==</span> <span style=color:#66d9ef>true</span>){
+</span></span><span style=display:flex><span>    gl_FragColor <span style=color:#f92672>=</span> <span style=color:#66d9ef>vec4</span>(Ftint(texel.r,colorT.x),Ftint(texel.g,colorT.y),Ftint(texel.b,colorT.z),<span style=color:#ae81ff>1.0</span>);
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span>{
+</span></span><span style=display:flex><span>    gl_FragColor <span style=color:#f92672>=</span> texel;  
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>  
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div></div></details><blockquote class="book-hint danger"><p><strong>Referencias:</strong></p><ul><li><strong>[Speeding Up tint() in p5]:</strong> <a href=https://www.davepagurek.com/blog/p5-tint/>https://www.davepagurek.com/blog/p5-tint/</a></li><li><strong>[HSL & HSV]:</strong> <a href=https://en.wikipedia.org/wiki/HSL_and_HSV#Disadvantages>https://en.wikipedia.org/wiki/HSL_and_HSV#Disadvantages</a></li><li><strong>[Blend Modes]:</strong> <a href=https://en.wikipedia.org/wiki/Blend_modes#Overlay>https://en.wikipedia.org/wiki/Blend_modes#Overlay</a></li><li><strong>[P5.js]:</strong> <a href=https://p5js.org/es/reference/>https://p5js.org/es/reference/</a></li></ul></blockquote></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/visualcomputing/showcase/commit/80fbcba49615973a13af8c3ccff40facb65a74c7 title='Last modified by dmateusb | June 21, 2023' target=_blank rel=noopener><img src=/showcase/svg/calendar.svg class=book-icon alt=Calendar>
+<span>June 21, 2023</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><ul><li><a href=#texturing>Texturing</a></li></ul></li></ul></nav></div></aside></main></body></html>
