@@ -87,3 +87,215 @@ The equations for R',G', and B' calculation are given on the assumption that X,Y
 [1] Stockman, A., Sharpe, L. and Vries, R. (1999) _Color Vision: From Genes to Perception_. Cambridge University Press.
 
 [Rog85] David Rogers. Procedural Elements for Computer Graphics. McGraw-Hill, 1985.
+
+
+#### Shaders
+
+>**Prompt:** 
+1. Figure it out the js code of the above sketches.
+2. Implement other blending modes. Take this reference as starting point.
+>
+
+#### First sketch
+
+{{< p5-global-iframe lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="420" height="420" >}}
+let blendShader;
+let color1, color2;
+let radius;
+
+function preload() {
+  blendShader = readShader('./blend.frag');
+}
+
+function setup() {
+  createCanvas(300, 300, WEBGL);
+  colorMode(RGB, 1);
+  radius = width / 5;
+  noStroke();
+  color1 = createColorPicker(color(0.8, 0.5, 0.3));
+  color1.position(10, 10);
+  color2 = createColorPicker(color(0.9, 0.1, 0.4));
+  color2.position(width / 2 + 10, 10);
+  shader(blendShader);
+}
+
+function draw() {
+  // rectMode, e.g., rectMode(RADIUS) requires Tree.pmvMatrix
+  // so no square but beginShape / endShape
+  let l = 0.8;
+  let offset = (1 - l) / 2;
+  let color1Color = color1.color();
+  let color2Color = color2.color();
+  background(0);
+  blendShader.setUniform('uMaterial1', [red(color1Color), green(color1Color), blue(color1Color), 1.0]);
+  blendShader.setUniform('uMaterial2', [1.0, 1.0, 1.0, 1.0]);
+  beginShape();
+  vertex(-offset - l, +offset, 0);
+  vertex(-offset, +offset, 0);
+  vertex(-offset, +offset + l, 0);
+  vertex(-offset - l, +offset + l, 0);
+  endShape();
+  blendShader.setUniform('uMaterial1', [1.0, 1.0, 1.0, 1.0]);
+  blendShader.setUniform('uMaterial2', [red(color2Color), green(color2Color), blue(color2Color), 1.0]);
+  beginShape();
+  vertex(+offset, +offset, 0);
+  vertex(+offset + l, +offset, 0);
+  vertex(+offset + l, +offset + l, 0);
+  vertex(+offset, +offset + l, 0);
+  endShape();
+  blendShader.setUniform('uMaterial1', [red(color1Color), green(color1Color), blue(color1Color), 1.0]);
+  blendShader.setUniform('uMaterial2', [red(color2Color), green(color2Color), blue(color2Color), 1.0]);
+  beginShape();
+  vertex(-l / 2, -offset - l, 0);
+  vertex(+l / 2, -offset - l, 0);
+  vertex(+l / 2, -offset, 0);
+  vertex(-l / 2, -offset, 0);
+  endShape();
+}
+
+{{< /p5-global-iframe >}}
+
+#### First sketch
+
+{{< p5-global-iframe lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="420" height="420" >}}
+let blendShader;
+let brightness;
+let color1, color2;
+let radius;
+
+function preload() {
+  blendShader = readShader('blend2.frag');
+}
+
+function setup() {
+  createCanvas(300, 300, WEBGL);
+  colorMode(RGB, 1);
+  rectMode(RADIUS);
+  radius = width / 5;
+  noStroke();
+  color1 = createColorPicker(color(0.8, 0.5, 0.3));
+  color1.position(10, 10);
+  color2 = createColorPicker(color(0.9, 0.1, 0.4));
+  color2.position(width / 2 + 10, 10);
+  // brightness slider (located above to the right)
+  // emits 'brightness' uniform in [0.0, 1.0] ∈ R
+  brightness = createSlider(0, 1, 0.5, 0.05);
+  brightness.position(width / 2 - 35, height / 2);
+  brightness.style('width', '80px');
+  shader(blendShader);
+}
+
+function draw() {
+  // rectMode, e.g., rectMode(RADIUS) requires Tree.pmvMatrix
+  // so no square but beginShape / endShape
+  let l = 0.8;
+  let offset = (1 - l) / 2;
+  let color1Color = color1.color();
+  let color2Color = color2.color();
+  background(0);
+  blendShader.setUniform('uMaterial1', [red(color1Color), green(color1Color), blue(color1Color), 1.0]);
+  blendShader.setUniform('uMaterial2', [1.0, 1.0, 1.0, 1.0]);
+  blendShader.setUniform('brightness', 1.0);
+  beginShape();
+  vertex(-offset - l, +offset, 0);
+  vertex(-offset, +offset, 0);
+  vertex(-offset, +offset + l, 0);
+  vertex(-offset - l, +offset + l, 0);
+  endShape();
+  blendShader.setUniform('uMaterial1', [1.0, 1.0, 1.0, 1.0]);
+  blendShader.setUniform('uMaterial2', [red(color2Color), green(color2Color), blue(color2Color), 1.0]);
+  blendShader.setUniform('brightness', 1.0);
+  beginShape();
+  vertex(+offset, +offset, 0);
+  vertex(+offset + l, +offset, 0);
+  vertex(+offset + l, +offset + l, 0);
+  vertex(+offset, +offset + l, 0);
+  endShape();
+  blendShader.setUniform('uMaterial1', [red(color1Color), green(color1Color), blue(color1Color), 1.0]);
+  blendShader.setUniform('uMaterial2', [red(color2Color), green(color2Color), blue(color2Color), 1.0]);
+  blendShader.setUniform('brightness', brightness.value());
+  beginShape();
+  vertex(-l / 2, -offset - l, 0);
+  vertex(+l / 2, -offset - l, 0);
+  vertex(+l / 2, -offset, 0);
+  vertex(-l / 2, -offset, 0);
+  endShape();
+}
+
+{{< /p5-global-iframe >}}
+
+#### Other blending modes
+
+Here we can select from different blending modes on the select option
+
+{{< p5-global-iframe lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="420" height="420" >}}
+let colorShader;
+let slider;
+
+function preload() {
+  colorShader = readShader('blend3.frag',
+                          { matrices: Tree.NONE, varyings: Tree.color4 });
+}
+
+function setup() {
+  createCanvas(400, 400, WEBGL);
+  colorPickerA = createColorPicker('yellow');
+  colorPickerA.position(5, 5);
+  colorPickerB = createColorPicker('cyan');
+  colorPickerB.position(80, 5);
+  slider = createSlider(0, 255, 200);
+  slider.position(160, 100);
+  slider.style('width', '80px');
+  sel = createSelect();
+  sel.position(200, 10);
+  sel.option('add');
+  sel.option('diff');
+  sel.option('mult');
+  sel.option('screen');
+  sel.option('light');
+  sel.option('dark');
+}
+
+function draw() {
+  background(0);
+  // Update the color variables in the shader
+  updateShaderColors();
+  // Draw the two regular rectangles
+  resetShader();
+  fill(colorPickerA.color());
+  rect(-100, -50, 100, 100);
+  fill(colorPickerB.color());
+  rect(0, -50, 100, 100);
+  // Draw with blend mode shader
+  shader(colorShader);
+  beginShape();
+  vertex(0.25, 0.25);
+  vertex(0.25, -0.25);
+  vertex(-0.25, -0.25);
+  vertex(-0.25, 0.25);
+
+  endShape(CLOSE);
+}
+
+function updateShaderColors(){
+    colorShader.setUniform('colorA', [ red(colorPickerA.color())/255,
+                                        green(colorPickerA.color())/255,
+                                        blue(colorPickerA.color())/255,
+                                        alpha(colorPickerA.color())/255]);
+    colorShader.setUniform('colorB', [  red(colorPickerB.color())/255,
+                                        green(colorPickerB.color())/255,
+                                        blue(colorPickerB.color())/255,
+                                        alpha(colorPickerB.color())/255]);
+    colorShader.setUniform('alphaValue', slider.value()/255.0);
+    let item = 1;
+    if( sel.value() == 'ADD' ) item = 1;
+    else if( sel.value() == 'DIFFERENCE' ) item = 2;
+    else if( sel.value() == 'MULTIPLY' ) item = 3;
+    else if( sel.value() == 'SCREEN' ) item = 4;
+    else if( sel.value() == 'LIGHTEST' ) item = 5;
+    else if( sel.value() == 'DARKEST' ) item = 6;
+    //print(item);
+    colorShader.setUniform('blendMode', item);                                      
+}
+
+{{< /p5-global-iframe >}}
