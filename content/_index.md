@@ -14,10 +14,10 @@ This is a workbook for the Visual Computing class in the National University of 
 
 # Deliveries:
 * First delivery link: https://youtu.be/KKfeNefDymY
-* Second delivery link: https://youtu.be/34hVTUDFbhQ
+* Second delivery link: https://youtu.be/VDugEjLzUVQ
 
 {{< youtube KKfeNefDymY>}}
-{{< youtube 34hVTUDFbhQ>}}
+{{< youtube VDugEjLzUVQ>}}
 
 ## Hacking
 
